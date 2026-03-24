@@ -3,5 +3,4 @@
 ## Descripción
 Aplicación web en Flask con autenticación y registro de logs.
 
-## Video demostración
-https://drive.google.com/tu-link-aqui
+
