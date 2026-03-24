@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autenticación con Flask</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+        }
+
+        .hero.is-custom {
+            background: transparent;
+        }
+
+        .navbar, .navbar-menu {
+            background: rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .navbar-item, .title, .subtitle, .label, .has-text-white {
+            color: white !important;
+        }
+
+        .box {
+            border-radius: 15px;
+        }
+
+        a.navbar-item:hover {
+            background-color: rgba(255,255,255,0.1) !important;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero is-custom is-fullheight">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div id="navbarMenuHeroA" class="navbar-menu is-active">
+                        <div class="navbar-end">
+                            <a href="{{ url_for('main.index') }}" class="navbar-item">
+                                Inicio
+                            </a>
+
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('main.profile') }}" class="navbar-item">
+                                Perfil
+                            </a>
+                            {% endif %}
+
+                            {% if not current_user.is_authenticated %}
+                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
+                                Login
+                            </a>
+                            <a href="{{ url_for('auth.register') }}" class="navbar-item">
+                                Registro
+                            </a>
+                            {% endif %}
+
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+                                Cerrar Sesión
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+</body>
+</html>

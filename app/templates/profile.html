@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title has-text-white">
+    Bienvenido, {{ name }}
+</h1>
+
+<h2 class="subtitle has-text-white">
+    Este es tu perfil de usuario.
+</h2>
+
+<p class="has-text-white">
+    Correo: {{ email }}
+</p>
+
+<br>
+
+<p class="has-text-white">
+    Si eres administrador puedes entrar al área de administración de usuarios y roles.
+</p>
+{% endblock %}
